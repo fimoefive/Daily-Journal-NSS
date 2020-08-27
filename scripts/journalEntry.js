@@ -8,11 +8,11 @@ export const JournalEntryComponent = (entry) => {
     return `
         <section id="entry--${entry.id}" class="journalEntry">
         <h3>${journal.date}</h3>
-        ${journal.concept}
-        ${journal.entry}
-        ${journal.mood}
+        <h3>${journal.concept}</h3>
+        <h3>${journal.entry}</h3>
+        <h3>${journal.mood}</h3>
             Display the entry's full text, and the date
             it was entered here.
         </section>
     `
-}
+};
