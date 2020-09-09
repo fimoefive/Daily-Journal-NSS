@@ -1,3 +1,8 @@
+import { getEntries, useJournalEntries } from "./journalDataProvider";
+
+const eventHub = document.querySelector(".container");
+const contentTarget = document.querySelector(".container");
+
 export const JournalFormComponent = () => {
     const Journalform = ` <article>
     <h2>Daily Journal</h2>
@@ -32,4 +37,11 @@ export const JournalFormComponent = () => {
     <article>
     `
     document.getElementById("form").innerHTML += journalForm
+};
+
+
+export const EntryForm = () => {
+  getEntries().then(() => {
+    render (useJournalEntries())
+  })
 };
