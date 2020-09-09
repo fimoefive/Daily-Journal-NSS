@@ -19,7 +19,6 @@ const addEntryToDom = (array) => {
 };
 
 
-
 export const EntryList = () => {
     // Use the journal entry data from the data provider component
     getEntries()
@@ -34,5 +33,3 @@ export const EntryList = () => {
     */
     entryLog.innerHTML += JournalEntryComponent(entry);
 };
-
-

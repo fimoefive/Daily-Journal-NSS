@@ -1,5 +1,3 @@
-import { useJournalEntries } from "./journalDataProvider"
-
 /*
  *  Purpose: To render a single journal entry as an
  *           HTML representation of the data

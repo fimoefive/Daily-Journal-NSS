@@ -2,15 +2,17 @@
     "entries": [
         {
             "id": 1,
-            "concept": "array methodes",
             "date": "08/18/2020",
+            "concept": "array methodes",
+            "entry": "",
             "mood": "good"
 
         },
         {
             "id": 2,
-            "concept": "functions",
             "date": "08/23/2020",
+            "concept": "functions",
+            "entry": "",
             "mood": "good"
 
         }
