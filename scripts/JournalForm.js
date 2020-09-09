@@ -4,7 +4,7 @@ const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".container");
 
 export const JournalFormComponent = () => {
-    const Journalform = ` <article>
+  contentTarget.innerHTML = ` <article>
     <h2>Daily Journal</h2>
     <form action="">
       <fieldset>
@@ -36,12 +36,12 @@ export const JournalFormComponent = () => {
   
     <article>
     `
-    document.getElementById("form").innerHTML += journalForm
+  document.getElementById("form").innerHTML += journalForm
 };
 
 
 export const EntryForm = () => {
   getEntries().then(() => {
-    render (useJournalEntries())
+    render(useJournalEntries())
   })
 };

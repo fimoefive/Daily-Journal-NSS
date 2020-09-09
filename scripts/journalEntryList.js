@@ -4,10 +4,20 @@
  *    there are items in the collection exposed by the
  *    data provider component
  */
-import { useJournalEntries, getEntries } from "./JournalDataProvider.js"
-import { JournalEntryComponent } from "./JournalEntry.js"
+import { useJournalEntries, getEntries } from "./JournalDataProvider.js";
+import { JournalEntryComponent } from "./JournalEntry.js";
 
 // DOM reference to where all entries will be rendered
+const addEntryToDom = (array) => {
+    const entryElement = document.querySelector("#entryLog");
+
+    let HTMLArray = array.map(singleEntry => {
+        return JournalEntryComponent(singleEntry);
+
+    })
+    entryElement.innerHTML = HTMLArray.join("");
+};
+
 
 
 export const EntryList = () => {
@@ -25,12 +35,4 @@ export const EntryList = () => {
     entryLog.innerHTML += JournalEntryComponent(entry);
 };
 
-const addEntryToDom = (array) => {
-    const entryElement = document.querySelector("#entryLog");
 
-    let HTMLArray = array.map(singleEntry => {
-        return JournalEntryComponent(singleEntry);
-
-    })
-    entryElement.innerHTML = HTMLArray.join("");
-};

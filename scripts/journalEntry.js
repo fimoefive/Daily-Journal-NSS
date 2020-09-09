@@ -4,13 +4,13 @@ import { useJournalEntries } from "./journalDataProvider"
  *  Purpose: To render a single journal entry as an
  *           HTML representation of the data
  */
-export const JournalEntryComponent = (entry) => {
+export const JournalEntryComponent = (journalObj) => {
     return `
-        <section id="entry--${entry.id}" class="journalEntry">
-        <h3>${journal.date}</h3>
-        <h3>${journal.concept}</h3>
-        <h3>${journal.entry}</h3>
-        <h3>${journal.mood}</h3>
+        <section id="entry--${journalObj.id}" class="journalEntry">
+        ${new Date(journalObj.date).toLocaleDateString("en-US")}
+        ${journalObj.concept}
+        ${journalObj.entry}
+        ${journalObj.mood}
             Display the entry's full text, and the date
             it was entered here.
         </section>
