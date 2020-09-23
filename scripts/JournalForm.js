@@ -77,9 +77,10 @@ export const JournalFormComponent = () => {
     </select>
   </fieldset>
     </form>
-    <input type="submit" class="submit" value="Record Journal Entry">
+    <input type="submit" class="submit" value="Record Journal Entry">Record Entry</input>
     
-    <input type="delete" class="delete" value="Delete Entry">
+    <input type="delete" class="delete" value="Delete Entry">Delete Entry</input>
+    <div class="filters"></div>
     <div id="entryLog"></div>
   </article>
   </main>

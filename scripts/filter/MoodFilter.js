@@ -2,11 +2,12 @@
 
 
 const eventHub = document.querySelector("article");
+
 eventHub.addEventListener("change", e => {
     if (e.target.name === "moodFilter") {
 
     }
-}
+})
 
 export const MoodFilter = () => {
     return `
@@ -23,4 +24,4 @@ export const MoodFilter = () => {
             }
         </fieldset>
         `
-}
+};
