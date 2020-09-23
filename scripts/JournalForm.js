@@ -1,7 +1,29 @@
 import { getEntries, useJournalEntries } from "./journalDataProvider";
 
-const eventHub = document.querySelector(".container");
+
 const contentTarget = document.querySelector(".container");
+const eventHub = document.querySelector("article");
+
+eventHub.addEventListener("click", clickEvent => {
+  if(clickEvent.target.id == "submit") {
+
+    const contentDate = document.querySelector("#journalDate");
+    const contentConcepts = document.querySelector("#journalConcepts");
+    const contentEntry = document.querySelector("#journalEntry");
+    const contentMood = document.querySelector("#journalMood");
+   
+    if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
+      const newJournalEntry = {
+        ""
+      }
+    }
+
+  }
+
+})
+
+
+
 
 export const JournalFormComponent = () => {
   contentTarget.innerHTML = ` <article>
