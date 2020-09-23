@@ -1,4 +1,4 @@
-import { getEntries, useJournalEntries } from "./journalDataProvider";
+import { getEntries, useJournalEntries, saveJournalEntry } from "./journalDataProvider";
 
 
 const contentTarget = document.querySelector(".container");
@@ -14,19 +14,27 @@ eventHub.addEventListener("click", clickEvent => {
    
     if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
       const newJournalEntry = {
-        ""
+        "date": contentDate.value,
+        "concepts": contentConcepts.value,
+        "entry": contentConcepts.value,
+        "mood": contentMood.value,
       }
+      saveJournalEntry(newJournalEntry);
     }
 
   }
 
-})
-
-
-
+});
+export const EntryForm = () => {
+  getEntries().then(() => {
+    render(useJournalEntries())
+  })
+};
 
 export const JournalFormComponent = () => {
-  contentTarget.innerHTML = ` <article>
+  contentTarget.innerHTML = ` 
+  <main class="container">
+  <article>
     <h2>Daily Journal</h2>
     <form action="">
       <fieldset>
@@ -54,16 +62,9 @@ export const JournalFormComponent = () => {
   </fieldset>
     </form>
     <input type="submit" class="submit" value="Record Journal Entry">
+    <div id="entryLog"></div>
   </article>
-  
-    <article>
+  </main>
     `
-  document.getElementById("form").innerHTML += journalForm
-};
-
-
-export const EntryForm = () => {
-  getEntries().then(() => {
-    render(useJournalEntries())
-  })
+  contentTarget.innerHTML += JournalFormComponent
 };
