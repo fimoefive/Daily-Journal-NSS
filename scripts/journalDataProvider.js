@@ -15,7 +15,9 @@ export const useJournalEntries = () => {
 };
 
 const dispatchStateChangeEvent = () => {
-    eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))
+    const journalStateChanged = new CustomEvent("journalStateChanged")
+
+    eventHub.dispatchEvent(journalStateChanged)
 };
 
 export const getEntries = () => {

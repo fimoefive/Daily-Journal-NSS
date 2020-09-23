@@ -24,6 +24,27 @@ eventHub.addEventListener("click", clickEvent => {
     }
   }
 });
+/*
+eventHub.addEventListener("click", clickEvent => {
+  if(clickEvent.target.id == "delete") {
+
+    const contentDate = document.querySelector("#journalDate");
+    const contentConcepts = document.querySelector("#journalConcepts");
+    const contentEntry = document.querySelector("#journalEntry");
+    const contentMood = document.querySelector("#journalMood");
+   
+    if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
+      const newJournalEntry = {
+        "date": contentDate.value,
+        "concepts": contentConcepts.value,
+        "entry": contentConcepts.value,
+        "mood": contentMood.value,
+      }
+      saveJournalEntry(newJournalEntry);
+    }
+  }
+});
+*/
 
 export const JournalFormComponent = () => {
   contentTarget.innerHTML = ` 
@@ -58,7 +79,7 @@ export const JournalFormComponent = () => {
     </form>
     <input type="submit" class="submit" value="Record Journal Entry">
     
-    <input type="delet" class="delet" value="Delete Entry">
+    <input type="delete" class="delete" value="Delete Entry">
     <div id="entryLog"></div>
   </article>
   </main>
