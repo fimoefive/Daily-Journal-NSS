@@ -9,13 +9,16 @@ import { JournalEntryComponent } from "./JournalEntry.js";
 
 
 // DOM reference to where all entries will be rendered
-const addEntryToDom = (array) => {
-    const entryElement = document.querySelector("#entryLog");
+const contentTarget = document.querySelector(".container");
+const entryElement = document.querySelector("#entryLog");
+const eventHub = document.querySelector("article");
 
+const addEntryToDom = (array) => {
+    
     let HTMLArray = array.map(singleEntry => {
         return JournalEntryComponent(singleEntry);
     })
-    entryElement.innerHTML = HTMLArray.join("");
+    entryElement.innerHTML += HTMLArray.join("");
 };
 
 
