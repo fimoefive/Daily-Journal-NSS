@@ -1,4 +1,5 @@
-import { getEntries, useJournalEntries, saveJournalEntry } from "./journalDataProvider";
+import { getEntries, useJournalEntries, saveJournalEntry } from "./journalDataProvider.js";
+import { getMoods, useJournalMood, saveJournalEntry } from "../mood/moodDataProvider.js";
 
 
 const contentTarget = document.querySelector(".container");
@@ -21,15 +22,8 @@ eventHub.addEventListener("click", clickEvent => {
       }
       saveJournalEntry(newJournalEntry);
     }
-
   }
-
 });
-export const EntryForm = () => {
-  getEntries().then(() => {
-    render(useJournalEntries())
-  })
-};
 
 export const JournalFormComponent = () => {
   contentTarget.innerHTML = ` 
@@ -51,20 +45,36 @@ export const JournalFormComponent = () => {
   </fieldset>
   <fieldset>
     <lable for="journalMood">Mood for the day</lable>
-    <select name="mood" id="journalMood">
-    <option value="happy">Happy</option>
-    <option value="sad">Sad</option>
-    <option value="mellow">Mellow</option>
-    <option value="tired">Tired</option>
-    <option value="excited">Excited</option>
-    <option value="accomplished">Accomplished</option>
+    <select name="mood" id="mood">
+    ${
+      allMoods.map(
+          (mood) => {
+              return `<option value="${ mood.id }">${ mood.label }</option>`
+          }
+      ).join("")
+  }
     </select>
   </fieldset>
     </form>
     <input type="submit" class="submit" value="Record Journal Entry">
+    
+    <input type="delet" class="delet" value="Delete Entry">
     <div id="entryLog"></div>
   </article>
   </main>
     `
   contentTarget.innerHTML += JournalFormComponent
+};
+
+export const EntryForm = () => {
+  getEntries().then(() => {
+    render(useJournalEntries())
+  })
+};
+
+export const EntryMood = () => {
+  getMoods().then(() => {
+    const moods = useJournalMood();
+    JournalFormComponent(moods);
+  })
 };

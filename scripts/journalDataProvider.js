@@ -1,13 +1,9 @@
 /*
  *   Journal data provider for Daily Journal application
- *
  *      Holds the raw data about each entry and exports
  *      functions that other modules can use to filter
  *      the entries for different purposes.
- */
-
-// This is the original data.
-   
+ */ 
 /*
     You export a function that provides a version of the
     raw data in the format that you want
@@ -23,7 +19,7 @@ const dispatchStateChangeEvent = () => {
 };
 
 export const getEntries = () => {
-    return fetch("http://localhost:8088/entries") // Fetch from the API
+    return fetch("http://localhost:8088/entries") 
         .then(response => response.json())
         .then(parsedEntry => {
             
@@ -32,7 +28,7 @@ export const getEntries = () => {
 };
 
  export const saveJournalEntry = (entryObj) => {
-    // Use `fetch` with the POST method to add your entry to your API
+    
     return fetch("http://localhost:8088/entries", {
     method: "POST",
     headers: {

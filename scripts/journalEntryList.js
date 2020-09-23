@@ -31,5 +31,5 @@ export const EntryList = () => {
         Invoke the component that returns an
         HTML representation of a single entry
     */
-    entryElement.innerHTML += JournalEntryComponent(entry);
+    entryElement.innerHTML += JournalEntryComponent(singleEntry);
 };
