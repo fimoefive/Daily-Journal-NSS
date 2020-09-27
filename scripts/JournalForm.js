@@ -59,7 +59,13 @@ export const EntryMood = () => {
   <fieldset>
     <lable for="journalMood">Mood for the day</lable>
     <select id="mood" class"journalEntryInput">
-   
+    ${
+      allMoods.map(
+          (mood) => {
+              return `<option value="${ mood.id }">${ mood.label }</option>`
+          }
+      ).join("")
+  }
     </select>
   </fieldset>
     <button type="button" class="submit" value="Record Journal Entry">Record Entry</button>
