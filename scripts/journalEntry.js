@@ -4,13 +4,11 @@
  */
 export const JournalEntryComponent = (journalObj) => {
     return `
-        <section id="entry--${journalObj.id}" class="journalEntry">
-        ${new Date(journalObj.date).toLocaleDateString("en-US")}
-        ${journalObj.concept}
-        ${journalObj.entry}
-        ${journalObj.mood}
-            Display the entry's full text, and the date
-            it was entered here.
-        </section>
+    <section id="entry--${journalObj.id}" class="journalEntry">
+        <p>${new Date(journalObj.date).toLocaleDateString("en-US")}</p>
+        <p>${journalObj.concept}</p>
+        <p>${journalObj.entry}</p>
+        <p>Mood: ${journalObj.mood}</p>
+    </section>
     `
 };

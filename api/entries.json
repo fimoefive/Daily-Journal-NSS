@@ -1,20 +1,32 @@
 {
-    "entries": [
+"entries": [
         {
             "id": 1,
             "date": "08/18/2020",
             "concept": "array methodes",
-            "entry": "",
-            "mood": "good"
-
+            "entry": "We learned about array methods, but only forEach made sense",
+            "moodId": 2
         },
         {
             "id": 2,
             "date": "08/23/2020",
             "concept": "functions",
-            "entry": "",
-            "mood": "good"
-
+            "entry": "Js file structer and .map method",
+            "moodId": 1,
+            "mood": {
+                "id": 1,
+                "label": "Ok"
+            }
         }
-    ]
+    ],
+"moods": [
+    {
+        "id": 1,
+        "label": "Ok"
+    },
+    {
+        "id": 2,
+        "label": "good"
+    }
+]
 }

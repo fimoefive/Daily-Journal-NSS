@@ -35,6 +35,7 @@ eventHub.addEventListener("click", clickEvent => {
   
 });
 */
+<option value="0">Please select a mood...</option>
 
 ${
   allMoods.map(
@@ -42,3 +43,11 @@ ${
           return `<option value="${ mood.id }">${ mood.label }</option>`
       }).join("")
  }
+
+ ${
+  allMoods.map(
+      (mood) => {
+          return `<option value="${ mood.id }">${ mood.label }</option>`
+      }
+  ).join("")
+}

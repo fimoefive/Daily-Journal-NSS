@@ -30,7 +30,7 @@ eventHub.addEventListener("click", (clickEvent) => {
       } 
 });
 
-export const EntryForm = () => {
+export const EntryMood = () => {
   getMoods()
   .then(() => {
     const moods = useMood();
@@ -47,25 +47,33 @@ export const EntryForm = () => {
     <form action="">
       <fieldset>
           <lable for="journalDate">Date of Entry</lable>
-          <input type="date" name="journalDate" id="journalDate">
+          <input type="date" name="journalDate" id="journalDate" class"journalEntryInput">
       </fieldset>
       <fieldset>
         <lable for="journalConcepts">Concepts covered</lable>
-        <input type="concepts" name="journalConcepts" id="journalConcepts">
+        <input type="text" name="journalConcepts" id="journalConcepts" class"journalEntryInput">
     </fieldset>
     <fieldset>
       <lable for="journalEntry">Journal Entry</lable>
-      <input type="entry" name="journalEntry" id="journalEntry">
+      <input type="entry" name="journalEntry" id="journalEntry" class"journalEntryInput">
   </fieldset>
   <fieldset>
     <lable for="journalMood">Mood for the day</lable>
-    <select name="mood" id="mood">
-    
+    <select id="mood" class"journalEntryInput">
+    ${
+      allMoods.map(
+          (mood) => {
+              return `<option value="${mood.id}">${mood.label}</option>`
+          }
+      ).join("")
+      }
     </select>
   </fieldset>
     <button type="button" class="submit" value="Record Journal Entry">Record Entry</button>
     
-    <button type="button" id="delete">Delete Entry</button>
+    <button type="button" class="delete" value="Delete Entry">Delete Entry</button>
+
+    <button type="button" class="edit" value="Edit Entry">Edit Entry</button>
 
     <div class="filters"></div>
     <div id="entryLog"></div>
