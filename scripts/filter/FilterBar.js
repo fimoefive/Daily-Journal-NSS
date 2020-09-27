@@ -5,7 +5,7 @@ import { MoodFilter } from "./MoodFilter.js";
  `filters` in index.html
 */
 
-const contentTarget = document.querySelector(".filters");
+// const contentTarget = document.querySelector("");
 
 const FilterBar = () => {
     render = () => {
@@ -16,3 +16,19 @@ const FilterBar = () => {
 
     render()
 };
+
+
+const radioButtonTarget = document.getElementsByName(".filters");
+radioButtonTarget.forEach((moodFilter) => {
+	moodFilter.addEventListener("click", (clickEvent) => {
+		const mood = clickEvent.target.value;
+        getJournalEntries()
+        .then((filteredEntries) => {
+			let filteredMood = filteredEntries.filter(
+				(entry) => entry.mood === mood
+			)
+			contentTarget.innerHTML = "";
+			addEntryToDom(filteredMood);
+		});
+	});
+});

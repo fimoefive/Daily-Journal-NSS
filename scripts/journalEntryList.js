@@ -13,13 +13,9 @@ const contentTarget = document.querySelector(".container");
 const entryElement = document.querySelector("#entryLog");
 const eventHub = document.querySelector("article");
 
-const addEntryToDom = (array) => {
-    
-    let HTMLArray = array.map(singleEntry => {
-        return JournalEntryComponent(singleEntry);
-    })
-    entryElement.innerHTML += HTMLArray.join("");
-};
+eventHub.addEventListener("journalStateChanged", event => {
+    render(useJournalEntries())
+})
 
 
 export const EntryList = () => {
@@ -27,12 +23,20 @@ export const EntryList = () => {
     getEntries()
         .then(() => {
             const entryArray = useJournalEntries();
-            console.log("entryArray", entryArray);
+            // console.log("entryArray", entryArray);
             addEntryToDom(entryArray);
         })
     /*
         Invoke the component that returns an
         HTML representation of a single entry
     */
-    entryElement.innerHTML += JournalEntryComponent(singleEntry);
+    // entryElement.innerHTML += JournalEntryComponent();
+};
+
+export const addEntryToDom = (array) => {
+    
+    let HTMLArray = array.map(singleEntry => {
+        return JournalEntryComponent(singleEntry);
+    })
+    entryElement.innerHTML += HTMLArray.join("");
 };

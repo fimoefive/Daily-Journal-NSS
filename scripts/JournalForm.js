@@ -1,53 +1,46 @@
 import { getEntries, useJournalEntries, saveJournalEntry } from "./journalDataProvider.js";
-import { getMoods, useJournalMood, saveJournalEntry } from "../mood/moodDataProvider.js";
+import { getMoods, useMood } from "./moodDataProvider.js";
 
 
 const contentTarget = document.querySelector(".container");
+const moodTarget = document.querySelector('#mood');
 const eventHub = document.querySelector("article");
 
-eventHub.addEventListener("click", clickEvent => {
-  if(clickEvent.target.id == "submit") {
 
-    const contentDate = document.querySelector("#journalDate");
-    const contentConcepts = document.querySelector("#journalConcepts");
-    const contentEntry = document.querySelector("#journalEntry");
-    const contentMood = document.querySelector("#journalMood");
-   
-    if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
-      const newJournalEntry = {
-        "date": contentDate.value,
-        "concepts": contentConcepts.value,
-        "entry": contentConcepts.value,
-        "mood": contentMood.value,
+eventHub.addEventListener("click", (clickEvent) => {
+    let contentDate = document.querySelector("#journalDate");
+    // let date = Date.now()
+    let contentConcepts = document.querySelector("#journalConcepts");
+    let contentEntry = document.querySelector("#journalEntry");
+    let contentMood = document.querySelector("#journalMood");
+    // if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
+      
+      if (clickEvent.target.id == "submit") {
+      const newSavedEntry = {
+        date: contentDate.value,
+        concepts: contentConcepts.value,
+        entry: contentConcepts.value,
+        mood: parseInt(contentMood.value)
       }
-      saveJournalEntry(newJournalEntry);
-    }
-  }
+      contentEntry.value = "",
+      contentConcepts.value = "",
+      contentDate.value = "",
+      contentMood.value = ""
+      saveJournalEntry(newSavedEntry);
+      } 
 });
-/*
-eventHub.addEventListener("click", clickEvent => {
-  if(clickEvent.target.id == "delete") {
 
-    const contentDate = document.querySelector("#journalDate");
-    const contentConcepts = document.querySelector("#journalConcepts");
-    const contentEntry = document.querySelector("#journalEntry");
-    const contentMood = document.querySelector("#journalMood");
-   
-    if (contentDate.value !== "" && contentConcepts.value !== "" && contentEntry.value !== "" && contentMood.value !== "0") {
-      const newJournalEntry = {
-        "date": contentDate.value,
-        "concepts": contentConcepts.value,
-        "entry": contentConcepts.value,
-        "mood": contentMood.value,
-      }
-      saveJournalEntry(newJournalEntry);
-    }
-  }
-});
-*/
+export const EntryForm = () => {
+  getMoods()
+  .then(() => {
+    const moods = useMood();
+    renderForm(useJournalEntries())
+  })
+};
 
-export const JournalFormComponent = () => {
-  contentTarget.innerHTML = ` 
+ export const renderForm = (allMoods) => {
+  const entryElement = document.querySelector("#entryLog"); 
+  entryElement.innerHTML = ` 
   <main class="container">
   <article>
     <h2>Daily Journal</h2>
@@ -67,36 +60,16 @@ export const JournalFormComponent = () => {
   <fieldset>
     <lable for="journalMood">Mood for the day</lable>
     <select name="mood" id="mood">
-    ${
-      allMoods.map(
-          (mood) => {
-              return `<option value="${ mood.id }">${ mood.label }</option>`
-          }
-      ).join("")
-  }
+    
     </select>
   </fieldset>
-    </form>
-    <input type="submit" class="submit" value="Record Journal Entry">Record Entry</input>
+    <button type="button" class="submit" value="Record Journal Entry">Record Entry</button>
     
-    <input type="delete" class="delete" value="Delete Entry">Delete Entry</input>
+    <button type="button" id="delete">Delete Entry</button>
+
     <div class="filters"></div>
     <div id="entryLog"></div>
+    </form>
   </article>
-  </main>
-    `
-  contentTarget.innerHTML += JournalFormComponent
-};
-
-export const EntryForm = () => {
-  getEntries().then(() => {
-    render(useJournalEntries())
-  })
-};
-
-export const EntryMood = () => {
-  getMoods().then(() => {
-    const moods = useJournalMood();
-    JournalFormComponent(moods);
-  })
+  </main> `
 };

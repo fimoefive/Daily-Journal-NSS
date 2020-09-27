@@ -21,7 +21,7 @@ const dispatchStateChangeEvent = () => {
 };
 
 export const getEntries = () => {
-    return fetch("http://localhost:8088/entries") 
+    return fetch("http://localhost:3000/entries") 
         .then(response => response.json())
         .then(parsedEntry => {
             
@@ -31,7 +31,7 @@ export const getEntries = () => {
 
  export const saveJournalEntry = (entryObj) => {
     
-    return fetch("http://localhost:8088/entries", {
+    return fetch("http://localhost:3000/entries", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

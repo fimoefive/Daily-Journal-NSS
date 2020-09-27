@@ -1,11 +1,11 @@
-import {JournalFormComponent} from "./form/JournalForm.js";
+// import { JournalFormComponent } from "./JournalForm.js";
 import {EntryList} from "./journalEntryList.js";
 import {useJournalEntries} from "./journalDataProvider.js";
-import { EntryForm, EntryMood } from "./JournalForm.js";
+import { renderForm } from "./JournalForm.js";
 
 useJournalEntries();
 EntryList();
-JournalFormComponent();
-EntryForm();
-EntryMood();
+// JournalFormComponent();
+renderForm();
+// EntryMood();
 // console.log("main")

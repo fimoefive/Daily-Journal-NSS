@@ -1,15 +1,13 @@
+let journalMoods;
 
-let journalMoods = [];
-
-export const useJournalMood = () => {
+export const useMood = () => {
     return journalMoods.slice()
 };
 
 export const getMoods = () => {
-    return fetch("http://localhost:8088/entries") 
+    return fetch(`http://localhost:3000/entries`) 
         .then(response => response.json())
         .then(parsedMood => {
-            
             journalMoods = parsedMood
         })
 };
