@@ -51,3 +51,5 @@ ${
       }
   ).join("")
 }
+
+entries?_expand=mood

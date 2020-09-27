@@ -1,6 +1,5 @@
 import { getEntries, useJournalEntries, saveJournalEntry } from "./journalDataProvider.js";
-import { getMoods, useMood } from "./moodDataProvider.js";
-
+import { getMoods, useMood } from "./mood/moodDataProvider.js";
 
 const contentTarget = document.querySelector(".container");
 const moodTarget = document.querySelector('#mood');
@@ -60,13 +59,7 @@ export const EntryMood = () => {
   <fieldset>
     <lable for="journalMood">Mood for the day</lable>
     <select id="mood" class"journalEntryInput">
-    ${
-      allMoods.map(
-          (mood) => {
-              return `<option value="${ mood.id }">${ mood.label }</option>`
-          }
-      ).join("")
-    }
+   
     </select>
   </fieldset>
     <button type="button" class="submit" value="Record Journal Entry">Record Entry</button>

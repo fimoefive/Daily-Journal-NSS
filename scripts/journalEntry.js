@@ -8,7 +8,7 @@ export const JournalEntryComponent = (journalObj) => {
         <p>${new Date(journalObj.date).toLocaleDateString("en-US")}</p>
         <p>${journalObj.concept}</p>
         <p>${journalObj.entry}</p>
-        <p>Mood: ${journalObj.mood}</p>
+        <p>Mood: ${journalObj.mood.label}</p>
     </section>
     `
 };

@@ -21,7 +21,7 @@ const dispatchStateChangeEvent = () => {
 };
 
 export const getEntries = () => {
-    return fetch("http://localhost:3000/entries") 
+    return fetch(`http://localhost:3000/entries`) 
         .then(response => response.json())
         .then(parsedEntry => {
             

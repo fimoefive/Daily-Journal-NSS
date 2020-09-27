@@ -22,15 +22,15 @@ export const EntryList = () => {
     getEntries()
         .then(() => {
             const entryArray = useJournalEntries();
-            // console.log("entryArray", entryArray);
             addEntryToDom(entryArray);
         })
+};
     /*
         Invoke the component that returns an
         HTML representation of a single entry
     */
     // entryElement.innerHTML += JournalEntryComponent();
-};
+
 
 export const addEntryToDom = (array) => {
     
