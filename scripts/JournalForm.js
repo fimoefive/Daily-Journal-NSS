@@ -63,10 +63,10 @@ export const EntryMood = () => {
     ${
       allMoods.map(
           (mood) => {
-              return `<option value="${mood.id}">${mood.label}</option>`
+              return `<option value="${ mood.id }">${ mood.label }</option>`
           }
       ).join("")
-      }
+    }
     </select>
   </fieldset>
     <button type="button" class="submit" value="Record Journal Entry">Record Entry</button>

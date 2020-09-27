@@ -13,10 +13,9 @@ const contentTarget = document.querySelector(".container");
 const entryElement = document.querySelector("#entryLog");
 const eventHub = document.querySelector("article");
 
-eventHub.addEventListener("journalStateChanged", event => {
+eventHub.addEventListener("journalStateChanged", changeEvent => {
     render(useJournalEntries())
 })
-
 
 export const EntryList = () => {
     // Use the journal entry data from the data provider component
