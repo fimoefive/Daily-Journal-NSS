@@ -1,29 +1,32 @@
 import { useJournalEntries, getEntries } from "./JournalDataProvider.js";
-import { JournalEntryComponent } from "./JournalEntry.js";
+import { JournalEntryObj } from "./JournalEntry.js";
 /*
  *  Purpose:
  *    To render as many journal entry components as
  *    there are items in the collection exposed by the
  *    data provider component
- */
-
-
-// DOM reference to where all entries will be rendered
+ */// DOM reference to where all entries will be rendered
 const contentTarget = document.querySelector(".container");
-const entryElement = document.querySelector("#entryLog");
+
 const eventHub = document.querySelector("article");
 
 eventHub.addEventListener("journalStateChanged", changeEvent => {
-    render(useJournalEntries())
+    addEntryToDom(useJournalEntries())
+})
+
+eventHub.addEventListener("moodChanged", changeEvent => {
+    const moodEntries = useJournalEntries();
+
+    addEntryToDom(useJournalEntries())
 })
 
 export const EntryList = () => {
     // Use the journal entry data from the data provider component
     getEntries()
         .then(() => {
-            const entryArray = useJournalEntries();
+            const entryArray = useJournalEntries()
             addEntryToDom(entryArray);
-        })
+        })     
 };
     /*
         Invoke the component that returns an
@@ -32,10 +35,12 @@ export const EntryList = () => {
     // entryElement.innerHTML += JournalEntryComponent();
 
 
-export const addEntryToDom = (array) => {
-    
-    let HTMLArray = array.map(singleEntry => {
-        return JournalEntryComponent(singleEntry);
+const addEntryToDom = (entryArray) => {
+    const entryElement = document.querySelector("#entryLog");
+       
+    let HTMLArray = entryArray.map(entry => {
     })
-    entryElement.innerHTML += HTMLArray.join("");
-};
+    return JournalEntryObj(journalObj)
+   
+    entryElement.innerHTML = HTMLArray.join("")
+}
